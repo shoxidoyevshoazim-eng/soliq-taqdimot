@@ -510,7 +510,7 @@ function refreshDyn(){ const S=STEPS[step]; if(!S) return; if(["lobby","poll","q
 let lastKey="";
 function renderDyn(force){ const S=STEPS[step], d=$("#dyn"), pl=plist();
   if(S.t==="lobby"){
-    if(force||!$(".lob",d)){ d.innerHTML=`<div class="lob"><div><div class="qrbox" id="qr"></div><div class="url">${esc(joinURL())}</div><div class="code">Xona: <b>${ROOM}</b></div></div>
+    if(force||!$(".lob",d)){ d.innerHTML=`<div class="lob"><div><div class="qrbox" id="qr"></div><div class="url" hidden>${esc(joinURL())}</div><div class="code">Xona: <b>${ROOM}</b></div></div>
       <div><div class="kick">SOLIQ · 39–40-MAVZULAR</div><h2 style="margin-top:12px">Telefoningizdan<br><span class="g2">QR kodni skanerlang</span></h2><div class="cnt" id="lcnt"></div><div class="avs" id="lavs"></div></div></div><div class="vidok" id="vok"></div>`;
       try{ new QRCode($("#qr"),{text:joinURL(),width:448,height:448,correctLevel:QRCode.CorrectLevel.M}); }catch(e){ $("#qr").innerHTML='<div style="color:#000;font-size:28px;padding:30px">QR yuklanmadi — havolani oching</div>'; } }
     $("#lcnt").textContent=`Qoʻshildi: ${pl.length} kishi`;
