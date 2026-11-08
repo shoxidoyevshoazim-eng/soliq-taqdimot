@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="robots" content="noindex,nofollow">
+<title>Soliq · 39–40-mavzular</title>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--g:#58fd76;--g2:#9dffb0;--w:#ffd36a;--tx:#eafff0;--mu:#9fc9aa;--red:#ff5c6c;
+ --c0:#e2453c;--c1:#2f7de1;--c2:#e7a51b;--c3:#2aa84a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;color:var(--tx);font-family:Inter,"Segoe UI",Roboto,"DejaVu Sans",sans-serif}
+.mono{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace}
+.hidden{display:none!important}
+button{font-family:inherit}
+
+/* ================= KATTA EKRAN ================= */
+body.host{overflow:hidden;width:100vw;height:100vh}
+#stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;overflow:hidden;background:#000}
+.s{position:absolute;inset:0;display:none}
+.s.on{display:block}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center bottom}
+.sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 26%,rgba(0,0,0,0) 46%,rgba(0,0,0,0) 72%,rgba(0,0,0,.75) 100%)}
+.top{position:absolute;left:70px;right:70px;top:44px}
+.kick{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:26px;letter-spacing:.22em;color:var(--g);text-shadow:0 0 10px rgba(88,253,118,.6)}
+#stage h1{font-size:100px;font-weight:800;line-height:1.04;margin-top:14px;min-height:104px;text-shadow:0 4px 30px rgba(0,0,0,.8)}
+h1 .g{color:var(--g);text-shadow:0 0 24px rgba(88,253,118,.55)}
+h1 .w{color:var(--w);text-shadow:0 0 24px rgba(255,211,106,.5)}
+.sub{font-size:40px;color:var(--g2);margin-top:16px;max-width:1400px;line-height:1.3;text-shadow:0 2px 12px #000}
+.bot{position:absolute;left:70px;right:70px;bottom:44px;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end}
+.chip{background:rgba(0,12,4,.78);border:1px solid rgba(88,253,118,.55);border-radius:14px;padding:18px 28px;font-size:36px;font-weight:700;box-shadow:0 0 24px rgba(88,253,118,.15);backdrop-filter:blur(4px)}
+.chip small{display:block;font-size:26px;font-weight:500;color:var(--mu);margin-top:4px}
+.chip.w{border-color:rgba(255,211,106,.7);box-shadow:0 0 24px rgba(255,211,106,.2)}
+.src{position:absolute;right:70px;bottom:12px;font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:17px;color:#5f8f6b}
+.dark{background:radial-gradient(ellipse at 50% 60%,#04230c 0%,#000 70%)}
+.gold{background:radial-gradient(ellipse at 50% 70%,#2a1c00 0%,#000 72%)}
+.center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.thx{font-size:112px;font-weight:800;color:var(--g);text-shadow:0 0 34px rgba(88,253,118,.6);min-height:130px}
+.thp{font-size:44px;color:var(--g2);margin-top:26px;max-width:1200px;line-height:1.4;min-height:62px}
+.thg{font-size:54px;color:var(--w);margin-top:22px;font-weight:700;text-shadow:0 0 20px rgba(255,211,106,.5);min-height:70px}
+.cur{display:inline-block;width:.5em;height:.82em;background:var(--g);margin-left:.06em;vertical-align:-.06em;box-shadow:0 0 14px var(--g)}
+.g2{color:var(--g)}
+canvas.rainbg{position:absolute;inset:0;opacity:.3}
+.bars{position:absolute;left:70px;right:70px;top:420px;display:flex;flex-direction:column;gap:34px}
+.br{display:grid;grid-template-columns:720px 1fr 320px;align-items:center;gap:26px;font-size:36px;font-weight:700}
+.br .tr{height:46px;border-radius:10px;background:rgba(255,211,106,.08);overflow:hidden}
+.br .tr i{display:block;height:100%;background:linear-gradient(90deg,#6b5520,#a0895a);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.br b{white-space:nowrap;font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:50px;color:#d9c79a}
+.br.hi span{color:var(--w)}.br.hi .tr i{background:linear-gradient(90deg,#c99a2b,#ffd36a);box-shadow:0 0 30px rgba(255,211,106,.6)}
+.br.hi b{color:var(--w);text-shadow:0 0 20px rgba(255,211,106,.6)}
+.banner{position:absolute;left:70px;right:70px;bottom:70px;font-size:38px;font-weight:700;color:var(--w);background:rgba(30,20,0,.75);border:1px solid rgba(255,211,106,.6);border-radius:16px;padding:18px 28px}
+#fx{position:absolute;inset:0;z-index:50;pointer-events:none}
+
+/* kalkulyator */
+.calc{position:absolute;left:70px;right:70px;bottom:44px;background:rgba(0,10,3,.86);border:1px solid rgba(88,253,118,.6);border-radius:22px;padding:26px 36px;backdrop-filter:blur(4px)}
+.calc .row{display:flex;align-items:center;gap:26px}
+.calc .lab{font-size:28px;color:var(--mu);width:260px}
+.calc input[type=range]{flex:1;height:14px;accent-color:#58fd76;cursor:pointer}
+.calc .val{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:54px;color:var(--tx);min-width:560px;text-align:right}
+.calc .res{display:flex;align-items:baseline;justify-content:space-between;margin-top:14px;border-top:1px dashed rgba(88,253,118,.35);padding-top:16px}
+.calc .res .f{font-size:34px;color:var(--mu)}
+.calc .res .r{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:92px;font-weight:700;color:var(--w);text-shadow:0 0 24px rgba(255,211,106,.6)}
+.calc .res .r.zero{color:var(--g)}
+.tog{display:inline-flex;align-items:center;gap:14px;font-size:28px;color:var(--tx);cursor:pointer;user-select:none;background:rgba(88,253,118,.08);border:1px solid rgba(88,253,118,.4);border-radius:40px;padding:10px 22px}
+.tog i{width:58px;height:32px;border-radius:20px;background:#244;position:relative;transition:.3s}
+.tog i:after{content:"";position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#cfe;transition:.3s}
+.tog.on i{background:#2aa84a}.tog.on i:after{left:30px}
+.calc .hint{font-size:22px;color:#5f8f6b;margin-top:8px}
+
+/* dinamik ekranlar */
+#dyn{position:absolute;inset:0;display:none;background:radial-gradient(ellipse at 50% 40%,#062a10 0%,#000 75%)}
+#dyn.on{display:block;animation:fin .6s ease}
+@keyframes fin{from{opacity:0}to{opacity:1}}
+.lob{position:absolute;inset:0;display:grid;grid-template-columns:560px 1fr;gap:50px;padding:60px 70px}
+.qrbox{background:#fff;border-radius:26px;padding:26px;width:500px;height:500px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(88,253,118,.35)}
+.qrbox canvas,.qrbox img{width:448px!important;height:448px!important;image-rendering:pixelated}
+.lob .url{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:24px;color:var(--g2);margin-top:22px;word-break:break-all;width:500px}
+.lob .code{font-size:34px;margin-top:10px;color:var(--mu)}.lob .code b{color:var(--w);font-size:48px;letter-spacing:.1em}
+.lob h2{font-size:68px;font-weight:800;line-height:1.05}
+.lob .cnt{font-size:40px;color:var(--g);margin:16px 0 22px}
+.avs{display:flex;flex-wrap:wrap;gap:14px;align-content:flex-start;max-height:560px;overflow:hidden}
+.avt{width:118px;text-align:center;animation:popin .6s cubic-bezier(.2,1.6,.4,1)}
+.avt img{width:96px;height:96px;object-fit:contain;animation:bob 2.4s ease-in-out infinite;transform-origin:50% 100%}
+.avt span{display:block;font-size:19px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@keyframes popin{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-4%) rotate(-2deg)}50%{transform:translateY(0)}75%{transform:translateY(-3%) rotate(2deg)}}
+.vidok{position:absolute;right:24px;bottom:16px;font-size:16px;color:#3f7a4c}
+
+.qv{position:absolute;inset:0;padding:50px 70px}
+.qv .qn{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:26px;letter-spacing:.2em;color:var(--g)}
+.qv .qt{font-size:62px;font-weight:800;line-height:1.15;margin-top:18px;max-width:1220px;min-height:150px}
+.timer{position:absolute;right:70px;top:46px;width:150px;height:150px}
+.timer svg{width:150px;height:150px;transform:rotate(-90deg)}
+.timer b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:800}
+.ans{position:absolute;left:70px;right:70px;bottom:120px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.op{position:relative;border-radius:18px;padding:26px 30px 26px 100px;font-size:38px;font-weight:700;min-height:130px;display:flex;align-items:center;transition:opacity .5s,transform .5s,filter .5s;line-height:1.2}
+.op .sh2{position:absolute;left:30px;top:50%;transform:translateY(-50%);font-size:46px;opacity:.9}
+.op .ct{position:absolute;right:26px;top:50%;transform:translateY(-50%);font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:44px;opacity:0}
+.op0{background:var(--c0)}.op1{background:var(--c1)}.op2{background:var(--c2)}.op3{background:var(--c3)}
+.rev .op{opacity:.28;filter:grayscale(.6)}
+.rev .op.ok{opacity:1;filter:none;transform:scale(1.03);box-shadow:0 0 0 5px #fff,0 0 50px rgba(255,255,255,.4)}
+.rev.vote .op{opacity:1;filter:none}
+.rev .op .ct{opacity:1}
+.qv .cnt2{position:absolute;left:70px;bottom:44px;font-size:30px;color:var(--mu)}
+.qv .xp{position:absolute;left:70px;right:70px;bottom:36px;font-size:36px;color:var(--w);font-weight:700}
+
+.lb{position:absolute;inset:0;padding:60px 120px}
+.lb h2{font-size:76px;font-weight:800;text-align:center}
+.lbr{display:grid;grid-template-columns:90px 110px 1fr 220px;align-items:center;gap:20px;font-size:44px;font-weight:700;background:rgba(88,253,118,.07);border:1px solid rgba(88,253,118,.25);border-radius:18px;padding:10px 30px;margin-top:18px;animation:slin .7s cubic-bezier(.2,.9,.2,1) both}
+.lbr img{width:90px;height:90px;object-fit:contain}
+.lbr .sc{text-align:right;font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;color:var(--w)}
+.lbr .rk{color:var(--g);font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace}
+@keyframes slin{from{transform:translateX(-80px);opacity:0}to{transform:none;opacity:1}}
+.pod{display:flex;justify-content:center;align-items:flex-end;gap:40px;margin-top:60px;height:640px}
+.pc{width:330px;text-align:center;animation:rise 1s cubic-bezier(.2,.9,.2,1) both}
+.pc img{width:190px;height:190px;object-fit:contain;animation:joy .7s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(255,211,106,.6))}
+.pc .nm{font-size:40px;font-weight:800;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc .pt{font-family:"JetBrains Mono","Consolas","DejaVu Sans Mono",monospace;font-size:34px;color:var(--w)}
+.pc .blk{margin-top:14px;border-radius:18px 18px 0 0;background:linear-gradient(180deg,rgba(255,211,106,.45),rgba(255,211,106,.05));font-size:90px;font-weight:900;color:#fff;display:flex;align-items:flex-start;justify-content:center;padding-top:16px}
+@keyframes rise{from{transform:translateY(200px);opacity:0}to{transform:none;opacity:1}}
+@keyframes joy{0%,100%{transform:translateY(0) rotate(-8deg) scale(1.05)}50%{transform:translateY(-14%) rotate(8deg) scale(1.12)}}
+.others{display:flex;justify-content:center;gap:28px;margin-top:20px;font-size:28px;color:var(--mu)}
+
+#black{position:absolute;inset:0;background:#000;z-index:90;display:none}
+#video{position:absolute;inset:0;width:100%;height:100%;background:#000;z-index:40;display:none;object-fit:contain}
+.ihint{position:absolute;left:0;right:0;bottom:30px;text-align:center;font-size:20px;color:#2c5a37}
+
+/* PIN / tarix */
+.ov{position:fixed;inset:0;background:rgba(0,6,2,.97);z-index:200;overflow:auto;color:var(--tx)}
+.pinbox{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);text-align:center}
+.pinbox input{font:700 40px monospace;width:260px;text-align:center;padding:14px;border-radius:14px;border:2px solid var(--g);background:#02140a;color:#fff;letter-spacing:.3em}
+.pinbox p{margin-top:14px;color:var(--mu)}
+.hist{max-width:1300px;margin:0 auto;padding:30px 30px 80px;font-size:16px}
+.hist h2{font-size:30px;margin-bottom:6px}
+.hist .bt{font-weight:600;font-size:15px;padding:9px 16px;border-radius:10px;border:1px solid var(--g);background:#04160a;color:#eafff0;cursor:pointer;margin:4px 6px 4px 0}
+.hist .bt.sel{background:#1c5a2b}
+.hist table{border-collapse:collapse;width:100%;margin-top:12px}
+.hist th,.hist td{border-bottom:1px solid #18381f;padding:7px 8px;text-align:left;vertical-align:middle}
+.hist th{color:var(--mu);font-weight:600;font-size:14px;white-space:nowrap}
+.hist td{white-space:nowrap}.hist td.muted{white-space:normal}
+.hist td img{width:38px;height:38px;object-fit:contain;vertical-align:middle}
+.hist .card{background:#04160a;border:1px solid #1c4426;border-radius:14px;padding:16px 18px;margin-top:16px}
+.hist .bar{height:12px;background:#58fd76;border-radius:6px;display:inline-block;vertical-align:middle}
+.hist .muted{color:var(--mu)}
+.hist .up{color:#58fd76}.hist .dn{color:#ff8a8a}
+.fbitem{padding:8px 0;border-bottom:1px dashed #1c4426}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0a2a12;border:1px solid var(--g);border-radius:12px;padding:10px 18px;z-index:300;font-size:16px}
+
+/* ================= TELEFON ================= */
+body.ph{min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#0b3317 0%,#020a04 62%) fixed;overflow-x:hidden}
+#ph{max-width:540px;margin:0 auto;padding:18px 14px 30px;min-height:100vh;display:flex;flex-direction:column}
+.ph h2{font-size:24px;text-align:center;margin-top:6px}
+.ph .muted{color:var(--mu);text-align:center;font-size:15px;margin-top:6px}
+.inp{width:100%;font-weight:600;font-size:20px;padding:14px 16px;border-radius:14px;border:1.5px solid rgba(88,253,118,.5);background:#03140a;color:#fff;margin-top:14px;outline:none}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}
+.av{position:relative;aspect-ratio:1;border-radius:14px;background:rgba(88,253,118,.06);border:1.5px solid rgba(88,253,118,.18);display:flex;align-items:flex-end;justify-content:center;cursor:pointer}
+.av img{width:96%;height:96%;object-fit:contain;animation:bob 2.4s ease-in-out infinite;transform-origin:50% 100%;pointer-events:none}
+.av.taken{opacity:.25;pointer-events:none}
+.av.sel{border-color:#58fd76;background:rgba(88,253,118,.2);box-shadow:0 0 22px rgba(88,253,118,.5)}
+.av.sel img{animation:dance .7s ease-in-out infinite}
+@keyframes dance{0%,100%{transform:translateY(0) rotate(-6deg) scale(1.08)}50%{transform:translateY(-12%) rotate(6deg) scale(1.15)}}
+.btn{display:block;width:100%;font-weight:800;font-size:20px;padding:16px;border-radius:14px;border:0;background:#58fd76;color:#03200b;cursor:pointer;margin-top:16px}
+.btn:disabled{opacity:.35}
+.err{color:var(--red);text-align:center;margin-top:10px;font-weight:600}
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+.hero .big{font-size:30px;font-weight:800;line-height:1.2}
+.hero .fact{font-size:20px;color:var(--g2);line-height:1.4;max-width:420px}
+.dim{opacity:.75}
+.me{position:relative;width:150px;height:150px;margin:0 auto}
+.me img{width:100%;height:100%;object-fit:contain;animation:bob 2.4s ease-in-out infinite;transform-origin:50% 100%}
+.me .bub{position:absolute;right:-30px;top:-14px;font-size:44px}
+.me.happy img{animation:joy .55s ease-in-out infinite!important;filter:drop-shadow(0 0 16px #ffd36a)}
+.me.sad img{animation:sad 2.6s ease-in-out infinite!important;filter:grayscale(.75) brightness(.7)}
+@keyframes sad{0%,100%{transform:translateY(6%) rotate(-3deg) scaleY(.94)}50%{transform:translateY(9%) rotate(3deg) scaleY(.9)}}
+.me .bub{animation:bubk 2s ease-in-out infinite}
+@keyframes bubk{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.tear{position:absolute;left:44%;top:34%;width:8px;height:12px;background:#7cc7ff;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;display:none}
+.me.sad .tear{display:block;animation:tear 1.3s ease-in infinite}
+@keyframes tear{0%{transform:translateY(0);opacity:1}100%{transform:translateY(44px);opacity:0}}
+.spark{position:fixed;pointer-events:none;font-size:24px;animation:fly 1.2s ease-out forwards;z-index:50}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy)) rotate(260deg);opacity:0}}
+.pbar{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--mu);padding:4px 2px 10px}
+.pbar img{width:34px;height:34px;object-fit:contain}
+.pbar b{color:var(--tx)}.pbar .sp{flex:1}.pbar .pts{color:var(--w);font-weight:800}
+.pq{font-size:21px;font-weight:700;text-align:center;line-height:1.3;margin:6px 0 12px}
+.pbtns{display:grid;grid-template-columns:1fr;gap:10px;flex:1}
+.pb{border:0;border-radius:16px;color:#fff;font-weight:700;font-size:19px;padding:14px 14px 14px 58px;text-align:left;position:relative;min-height:66px;cursor:pointer;line-height:1.25}
+.pb .s{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:26px;display:block}
+.pb:active{transform:scale(.98)}
+.pb.p0{background:var(--c0)}.pb.p1{background:var(--c1)}.pb.p2{background:var(--c2)}.pb.p3{background:var(--c3)}
+.pb.dim{opacity:.35}.pb.mine{box-shadow:0 0 0 4px #fff}
+.ptim{height:8px;border-radius:5px;background:rgba(255,255,255,.12);overflow:hidden;margin-bottom:12px}
+.ptim i{display:block;height:100%;background:var(--g);width:100%}
+.ring{font-size:84px;animation:shake .12s linear infinite}
+@keyframes shake{0%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}100%{transform:rotate(-14deg)}}
+canvas#prain{position:fixed;inset:0;width:100%;height:100%;z-index:-1;opacity:.45}
+.rate{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+.rate button{flex:1;font-size:40px;padding:12px 0;border-radius:16px;border:1.5px solid rgba(88,253,118,.3);background:#03140a;cursor:pointer}
+.rate button.sel{border-color:#58fd76;background:rgba(88,253,118,.22);transform:scale(1.08)}
+textarea.inp{min-height:110px;resize:vertical;font-size:17px}
+.rk{font-size:56px;font-weight:900;color:var(--w)}
+.cloud{font-size:44px;position:absolute;left:50%;top:-40px;transform:translateX(-50%);animation:bubk 2.6s ease-in-out infinite}
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+/* ===================== 1) SOZLAMALAR ===================== */
+const CONFIG = { apiKey:"AIzaSyA37kJKLWFW3cfFgG9zqa_vaOVBfYdgBHw", authDomain:"franchise-bazaar.firebaseapp.com",
+  databaseURL:"https://franchise-bazaar-default-rtdb.europe-west1.firebasedatabase.app", projectId:"franchise-bazaar", appId:"1:480699123974:web:6a3d62fdc611777dfeb687" };
+const PIN_CHK = "71597038c1cd7f669450eb8f65c29f7600a8649a3775d905980916fde97f304a";
+const Q = [{"q": "Talaba biror ish boshlasa, soliq toʻlab borishi shartmi?", "o": ["Uydagilarga bersa yetadi", "Oʻqishni bitirvosin, shoshmay turilar", "Kontraktni toʻlayapti-ku, yetadi", "BMTdan imtiyoz spravkasi bor"], "vote": 1, "xe": "gkVRVTy8ZeUJ/WG0kLhClSoPFnDkHXcWCPy+AA78oGys/IZQObM+oQS840RlUA=="}, {"q": "Yuridik shaxslarning mol-mulk soligʻini kim toʻlaydi?", "o": ["Korxona va tashkilotlar (firmalar)", "Faqat talabalar", "Faqat pensionerlar", "Hech kim"], "k": 2, "xe": "hxi8YLSRsFeVMRWuouwHfRpb57AUFOHhauPUvah4pD4P0fJ6+5uwVNgpDL25qBt1Ul3h/w=="}, {"q": "Quyidagilardan qaysi biri yuridik shaxs?", "o": ["Talaba", "MChJ (firma)", "Pensioner", "Oddiy fuqaro"], "k": 2, "xe": "ctQkAb6qpE5mX0b8uAMJ6PI4tVcdUzy5NrxN+maqnKtJlargSOviB2VXR+G4FUf+6Hm7RRM="}, {"q": "Firma qaysi mol-mulki uchun bu soliqni toʻlaydi?", "o": ["Xodimlarining maoshi", "Sotgan tovarlari", "Bino va inshootlari: ofis, doʻkon, zavod", "Bankdagi puli"], "k": 2, "xe": "PXlWQf7xBwhHO3urW1xPeLAqqQb3cvsfWbKVKgmypKgYdxpB4aIECOL0dKJEWl14rjCpBPJyv5T3"}, {"q": "Oʻzbekistonda binosi bor xorijiy firma bu soliqni toʻlaydimi?", "o": ["Yoʻq, chunki u chet ellik", "Faqat oʻz davlatiga toʻlaydi", "Faqat binoni ijaraga bersa", "Ha, toʻlaydi"], "k": 3, "xe": "JOXlbONTUVAxtn+nAlaot464Bt0pDfDr6gd4VVvm8SOtNvp6pl1UTyyyMaEMvHG0N2JKxilAPkscTmJV4jS9DR7p6TY="}, {"q": "Qaysi korxona bu soliqdan ozod qilingan?", "o": ["Nogironlar jamoat birlashmasiga tegishli, xodimlarining yarmi nogironligi boʻlgan korxona", "Eng katta zavod", "Chet el banki", "Har qanday doʻkon"], "k": 1, "xe": "eDmrM6QZvHGuk71HzGgLs7nwAXhbRO6jAg6t8XcJjVFQOb9ytBjqZbqJtUfXZECvpOQHZ15J4fEDHeLkOLJfUV08tHE="}, {"q": "Firma har yili binosi qiymatining necha foizini soliq qilib toʻlaydi?", "o": ["12%", "1,5%", "15%", "50%"], "k": 0, "xe": "Ua7dG43GPAGqoOmsrRpM6qgFC+zkcfkWDAxo/Syqpyd+t5SyBtchDrOv6QA2Ukn98RUO4ek48hZOU5JmMuVYrDOvlKBP22Y="}, {"q": "Zavod binosi 8 milliard soʻm turadi. Yiliga 1,5% dan qancha soliq toʻlaydi?", "o": ["12 million soʻm", "1,2 milliard soʻm", "120 million soʻm", "80 million soʻm"], "k": 3, "sec": 25, "xe": "WPz7uF42Chi/8VxXvaDbVBYMEG34f/hNrSHr3ekWhWhQ7PuoHXnwk+L/"}, {"q": "Bu soliqdan tushgan pul qaysi budjetga tushadi?", "o": ["Chet el bankiga", "Tuman va shahar (mahalliy) budjetiga", "Firmaning oʻziga qaytadi", "Xalqaro tashkilotlarga"], "k": 2, "xe": "e+ekAg7j5zi2VVVJNv09sE3sZrfdrVPYKQ61puEUcltP5vEVCEc7dO8WXlQxrzC0Tepy+5C4TcEpAruqqAVzTknruEI="}, {"q": "Koʻzlaringiz ogʻrimadimi?", "o": ["Hammasi joyida", "Biroz", "Ha, ogʻriy boshladi", "Negadir ekran boyadan beri qop-qora 😅"], "vote": 1, "xe": "SqJeUF0s/H+OAlaooZG4VNwmB7Wx5gc2W1v9sAIArXCHUaw="}];
+const SH = ["▲","◆","●","■"];
+const TOPIC = ["Hazil","Kim toʻlaydi","Yuridik shaxs","Qaysi mulk","Xorijiy firma","Imtiyozlar","Stavka 1,5%","Hisoblash","Qaysi budjet","Hazil"];
+const POLL = { q:"Toshkentga bu soliqdan bir yilda qancha pul tushadi?", o:["16 mlrd soʻm","160 mlrd soʻm","1,6 trln soʻm","16 trln soʻm"], a:2 };
+const RINGS = [2.0, 5.6, 9.2], RING_LEN = 1.6, PICKUP = 12.6;
+const PH = {   // telefonda koʻrinadigan qisqa matn
+ 1:["Bitta zavod — davlatga qancha?","Bugun: firmalar binosi uchun toʻlanadigan soliq"],
+ 2:["Uyingiz uchun soliq toʻlaysizmi?","Uy-joy uchun ham har yili soliq toʻlanadi"],
+ 3:["Firmalar ham toʻlaydi","Yuridik shaxs — firma, korxona, tashkilot"],
+ 4:["Atigi 1,5%","Bino qiymatining 1,5 foizi — har yili"],
+ 5:["Bitta zavod — qancha?","🙋 Javobni ovoz chiqarib ayting!"],
+ 6:["Xorijiy firma ham toʻlaydi","…agar Oʻzbekistonda binosi boʻlsa"],
+ 7:["Kimlar ozod?","Nogironlar jamoat birlashmalari korxonalari va MIZ investorlari"],
+ 8:["Pul qayerga oqadi?","Tuman va shahar budjetiga tushadi"],
+ 9:["Shahar budjetida 2-oʻrin","Toshkentda: ~1,6 trln soʻm"],
+ 10:["Pul nimaga aylanadi?","Chiroq, yoʻl, maktab, park"],
+ 11:["Esda qoladigan 3 narsa","1,5% · xorijiy firma ham · pul tumanimizga qaytadi"]
+};
+const qs = new URLSearchParams(location.search);
+const IS_HOST = qs.has("host");
+const DEMO = qs.has("demo") || !(window.firebase && CONFIG.databaseURL);
+let ROOM = (qs.get("room")||"").replace(/\D/g,"").slice(0,6);
+const $ = (s,r=document)=>r.querySelector(s), $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const AV = n => "kids/k" + String(n).padStart(2,"0") + ".png";
+const lsx = (()=>{ try { localStorage.setItem("_t","1"); return localStorage; } catch(e) { const m={}; return {getItem:k=>m[k]??null,setItem:(k,v)=>m[k]=String(v),removeItem:k=>delete m[k]}; } })();
+const fmt = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+function toast(m){ const d=document.createElement("div"); d.className="toast"; d.textContent=m; document.body.appendChild(d); setTimeout(()=>d.remove(),2600); }
+function vib(p){ try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} }
+
+/* ===================== 2) MAʼLUMOT OMBORI ===================== */
+const Store = (() => {
+  if (!DEMO) {
+    firebase.initializeApp(CONFIG);
+    const db = firebase.database(); let off = 0;
+    db.ref(".info/serverTimeOffset").on("value", s => off = s.val() || 0);
+    const R = p => db.ref(p.startsWith("/") ? p.slice(1) : "rooms/" + ROOM + (p ? "/" + p : ""));
+    let got=false, warned=false;
+    const diag = m => { if (got && !m.startsWith("⚠️ Yoz")) return; if (warned) return; warned=true; toast(m); };
+    setTimeout(()=>{ if(!got) diag("⚠️ Internet/Firebase bilan aloqa yoʻq. Sahifani yangilang."); }, 9000);
+    return {
+      on:(p,cb)=>R(p).on("value", s=>{ got=true; cb(s.val()); }, e=>diag("⚠️ Firebase: "+(e.code||e.message))),
+      once:p=>R(p).once("value").then(s=>{ got=true; return s.val(); }),
+      set:(p,v)=>R(p).set(v).catch(e=>diag("⚠️ Yozilmadi: "+(e.code||e.message))),
+      update:(p,v)=>R(p).update(v).catch(e=>diag("⚠️ Yozilmadi: "+(e.code||e.message))),
+      push:(p,v)=>R(p).push(v),
+      claim:(p,val)=>R(p).transaction(c => (c==null||c===val) ? val : undefined).then(r=>r.committed).catch(()=>false),
+      now:()=>Date.now()+off };
+  }
+  const subs=[]; let bc=null; try{ bc=new BroadcastChannel("soliq39"); }catch(e){}
+  const KEY="soliq_demo_db";
+  const load=()=>{ try{ return JSON.parse(lsx.getItem(KEY)||"{}"); }catch(e){ return {}; } };
+  const full=p=> p.startsWith("/") ? p.slice(1) : "rooms/"+ROOM+(p?"/"+p:"");
+  const get=(o,p)=>p.split("/").filter(Boolean).reduce((a,k)=>a==null?null:a[k],o);
+  const put=(o,p,v)=>{ const ks=p.split("/").filter(Boolean); let a=o; ks.slice(0,-1).forEach(k=>{ if(typeof a[k]!=="object"||a[k]===null) a[k]={}; a=a[k]; }); const l=ks[ks.length-1]; if(v===null||v===undefined) delete a[l]; else a[l]=JSON.parse(JSON.stringify(v)); };
+  const fire=()=>{ const o=load(); subs.forEach(s=>{ const v=JSON.stringify(get(o,s.p)??null); if(v!==s.last){ s.last=v; s.cb(JSON.parse(v)); } }); };
+  const save=o=>{ lsx.setItem(KEY,JSON.stringify(o)); try{ bc&&bc.postMessage(1); }catch(e){} setTimeout(fire); };
+  if(bc) bc.onmessage=()=>fire(); addEventListener("storage",e=>{ if(e.key===KEY) fire(); });
+  return {
+    on:(p,cb)=>{ const s={p:full(p),cb,last:undefined}; subs.push(s); setTimeout(fire); },
+    once:p=>Promise.resolve(get(load(),full(p))??null),
+    set:(p,v)=>{ const o=load(); put(o,full(p),v); save(o); return Promise.resolve(); },
+    update:(p,v)=>{ const o=load(); Object.entries(v).forEach(([k,x])=>put(o,full(p)+"/"+k,x)); save(o); return Promise.resolve(); },
+    push:(p,v)=>{ const o=load(); put(o,full(p)+"/"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),v); save(o); return Promise.resolve(); },
+    claim:(p,val)=>{ const o=load(), c=get(o,full(p)); if(c!=null&&c!==val) return Promise.resolve(false); put(o,full(p),val); save(o); return Promise.resolve(true); },
+    now:()=>Date.now() };
+})();
+const HIST = "/rooms/soliq_tarix";
+
+/* ===================== 3) SHIFRLASH (faqat boshlovchi) ===================== */
+let HK=null; const HA=[], HX=[];
+async function sha(s){ const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join(""); }
+async function tryKey(hk){ try{ if(!hk || await sha(hk+"|chk")!==PIN_CHK) return false; }catch(e){ return false; }
+  HK=hk; const hb=hk.match(/../g).map(h=>parseInt(h,16));
+  Q.forEach((q,i)=>{ if(q.k!=null) HA[i]=((q.k-hb[i])%4+4)%4;
+    try{ HX[i]=new TextDecoder().decode(Uint8Array.from(atob(q.xe),(c,j)=>c.charCodeAt(0)^hb[(j+i*7)%32])); }catch(e){ HX[i]=""; } }); return true; }
+let AESK=null;
+async function aesKey(){ if(AESK) return AESK; const raw=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(HK+"|hist")); AESK=await crypto.subtle.importKey("raw",raw,"AES-GCM",false,["encrypt","decrypt"]); return AESK; }
+const b64=u=>btoa(String.fromCharCode(...u)), unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function enc(obj){ const iv=crypto.getRandomValues(new Uint8Array(12)); const ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv},await aesKey(),new TextEncoder().encode(JSON.stringify(obj))));
+  let s=""; for(let i=0;i<ct.length;i+=8192) s+=String.fromCharCode(...ct.subarray(i,i+8192)); return {iv:b64(iv),ct:btoa(s)}; }
+async function dec(e){ const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:unb64(e.iv)},await aesKey(),unb64(e.ct)); return JSON.parse(new TextDecoder().decode(pt)); }
+
+/* ===================== 4) WAKE LOCK ===================== */
+let WL=null; async function wakeLock(){ try{ if("wakeLock" in navigator && !WL && document.visibilityState==="visible"){ WL=await navigator.wakeLock.request("screen"); WL.addEventListener("release",()=>WL=null); } }catch(e){} }
+document.addEventListener("visibilitychange",wakeLock); ["click","touchend","keydown"].forEach(ev=>document.addEventListener(ev,wakeLock,{passive:true}));
+
+IS_HOST ? hostMain() : phoneMain();
+
+/* ==========================================================================
+   5) KATTA EKRAN (BOSHLOVCHI)
+   ========================================================================== */
+function hostMain(){
+document.body.className="host";
+$("#root").innerHTML = `<div id="stage"><div class="s" id="s1"><div class="bg" style="background-image:url(img/1.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">SOLIQ VA SOLIQQA TORTISH · 39–40-MAVZULAR</div>
+  <h1>Bitta zavod — <span class="g">davlatga qancha?</span></h1>
+  <div class="sub">Yuridik shaxslarning mol-mulkiga solinadigan soliq: budjetdagi ahamiyati va toʻlovchilari</div></div>
+ <div class="bot"><div class="chip">Taqdimotchi: Shoazim Furqatovich</div><div class="chip w">Telefonlaringiz yoningizda boʻlsin — test bor!</div></div></div>
+
+<div class="s" id="s2"><div class="bg" style="background-image:url(img/2.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">SAVOL</div><h1>Uyingiz uchun <span class="g">soliq</span> toʻlaysizmi?</h1>
+  <div class="sub">Ota-onalarimiz har yili uy uchun soliq toʻlaydi. Firmalar ham xuddi shunday.</div></div></div>
+
+<div class="s" id="s3"><div class="bg" style="background-image:url(img/3.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">KIM TOʻLAYDI?</div><h1>Firmalar ham <span class="g">toʻlaydi</span></h1>
+  <div class="sub">Binosi bor firma — yuridik shaxslarning mol-mulk soligʻini toʻlaydi</div>
+  <div class="sub" style="font-size:32px;color:var(--mu);margin-top:10px">Yuridik shaxs — firma, korxona, tashkilot</div></div>
+ <div class="bot"><div class="chip">Ofis</div><div class="chip">Doʻkon</div><div class="chip">Ombor</div><div class="chip">Zavod</div></div>
+ <div class="src">Manba: OʻzR Soliq kodeksi, 410–411-moddalar</div></div>
+
+<div class="s" id="s4"><div class="bg" style="background-image:url(img/4.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">STAVKA · 2026-YIL</div><h1>Atigi <span class="g">1,5%</span></h1>
+  <div class="sub">Bino qiymatining 1,5 foizi — har bir yil uchun</div></div>
+ <div class="bot"><div class="chip">100 soʻmlik binodan → <span style="color:var(--w)">1 soʻm 50 tiyin</span></div></div>
+ <div class="src">Manba: OʻzR Soliq kodeksi · Soliq qoʻmitasi (2026)</div></div>
+
+<div class="s" id="s5"><div class="bg" style="background-image:url(img/5.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">HISOBLAB KOʻRAMIZ</div><h1>Bitta zavod — <span class="g">qancha?</span></h1>
+  <div class="sub">Bino qimmatlashsa — soliq qancha boʻladi? Kim tez aytadi?</div></div>
+ <div class="calc">
+  <div class="row"><div class="lab">Bino qiymati</div><input type="range" id="crng" min="0" max="1000" value="700"><div class="val" id="cval"></div></div>
+  <div class="res"><div><div class="f" id="cfor"></div><div class="tog" id="ctog" style="margin-top:12px"><i></i>Imtiyozli korxona</div></div><div class="r" id="cres"></div></div>
+ </div>
+ <div class="src">Misol shartli raqamlar bilan</div></div>
+
+<div class="s" id="s6"><div class="bg" style="background-image:url(img/6.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">XORIJIY FIRMALAR</div><h1>Xorijiy firma <span class="g">ham toʻlaydi</span></h1>
+  <div class="sub">…agar Oʻzbekistonda binosi boʻlsa</div></div>
+ <div class="bot"><div class="chip">Oʻzbekiston firmasi — <span class="g2">rezident</span><small>binosi boʻlsa — toʻlaydi</small></div><div class="chip">Xorijiy firma — <span class="g2">norezident</span><small>Oʻzbekistonda binosi boʻlsa — toʻlaydi</small></div><div class="chip w">Binosi yoʻq<small>toʻlamaydi</small></div></div>
+ <div class="src">Manba: OʻzR Soliq kodeksi, 410-modda</div></div>
+
+<div class="s" id="s7"><div class="bg" style="background-image:url(img/7.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">IMTIYOZLAR</div><h1>Kimlar <span class="g">ozod?</span></h1>
+  <div class="sub">Davlat baʼzi korxonalarga yordam beradi</div></div>
+ <div class="bot"><div class="chip">Nogironlar jamoat birlashmalari korxonalari<small>xodimlarning kamida yarmi — nogironligi boʻlgan shaxslar</small></div><div class="chip">Maxsus iqtisodiy zona investorlari<small>maʼlum muddatga</small></div></div>
+ <div class="src">Manba: OʻzR Soliq kodeksi, 414-modda · MIZ — Prezident qarorlari asosida</div></div>
+
+<div class="s" id="s8"><div class="bg" style="background-image:url(img/8.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">BUDJET</div><h1>Pul <span class="w">qayerga</span> oqadi?</h1>
+  <div class="sub">Pul uzoqqa ketmaydi — oʻzimizning <b style="color:var(--w)">tuman va shahar budjetiga</b> tushadi</div></div>
+ <div class="src">Manba: 2025-yil uchun Davlat budjeti toʻgʻrisidagi qonun</div></div>
+
+<div class="s gold" id="s9"><canvas class="rainbg" data-c="255,211,106"></canvas>
+ <div class="top"><div class="kick" style="color:var(--w)">REAL MISOL · TOSHKENT, 2025</div><h1>Shahar budjetida <span class="w">2-oʻrin</span></h1>
+  <div class="sub">Toshkent budjeti — 9,4 trln soʻm. Shundan:</div></div>
+ <div class="bars" style="top:400px">
+  <div class="br"><span>Jismoniy shaxslar daromad soligʻi</span><div class="tr"><i style="width:100%"></i></div><b>~1,8 trln</b></div>
+  <div class="br hi"><span>Yuridik shaxslarning mol-mulk soligʻi</span><div class="tr"><i style="width:89%"></i></div><b>~1,6 trln</b></div>
+ </div>
+ <div class="banner" id="pollban"></div>
+ <div class="src" style="color:#8f7a45">Manba: Toshkent shahar kengashi qarori, 2025-yil budjeti (daryo.uz)</div></div>
+
+<div class="s" id="s10"><div class="bg" style="background-image:url(img/9.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">NATIJA</div><h1>Pul <span class="w">nimaga</span> aylanadi?</h1>
+  <div class="sub">Koʻchangizdagi chiroq, yangi yoʻl, maktab — shu soliqdan</div></div>
+ <div class="bot"><div class="chip w">Chiroq</div><div class="chip w">Yoʻl</div><div class="chip w">Maktab</div><div class="chip w">Park</div></div></div>
+
+<div class="s" id="s11"><div class="bg" style="background-image:url(img/10.jpg)"></div><div class="sh"></div>
+ <div class="top"><div class="kick">XULOSA</div><h1>Esda qoladigan <span class="w">3 narsa</span></h1>
+  <div class="sub">Endi telefonlarni oling — 10 ta savol!</div></div>
+ <div class="bot"><div class="chip">Firma binosi uchun<small>1,5% toʻlaydi</small></div><div class="chip">Xorijiy firma ham<small>binosi boʻlsa</small></div><div class="chip w">Pul tumanimizga<small>qaytadi</small></div></div></div>
+
+<div class="s dark" id="s13"><canvas class="rainbg"></canvas><div class="center">
+ <div class="kick">SOLIQ · TIFT</div>
+ <div class="thx" style="margin-top:24px">Eʼtiboringiz uchun rahmat!</div>
+ <div class="thp">Bugungi kuningizga biroz yangilik va albatta quvonch bera olgan boʻlsak — xursandmiz.</div>
+ <div class="thg">Ketkazgan vaqtingizga rozi boʻling.</div></div></div>
+
+ <div id="dyn"></div>
+ <video id="video" playsinline preload="auto"></video>
+ <canvas id="fx" width="1600" height="900"></canvas>
+ <div id="black"></div>
+</div><input type="file" id="vf" accept="video/*" class="hidden">`;
+const stage=$("#stage");
+function fit(){ const k=Math.min(innerWidth/1600, innerHeight/900); stage.style.transform=`translate(${(innerWidth-1600*k)/2}px,${(innerHeight-900*k)/2}px) scale(${k})`; }
+addEventListener("resize",fit); fit();
+// fon kod yomg'iri (statik)
+$$("canvas.rainbg").forEach(c=>{ c.width=1600; c.height=900; const x=c.getContext("2d"); x.font="16px monospace"; const col0=c.dataset.c||"88,253,118";
+  for(let col=0;col<1600;col+=20){ const y0=Math.random()*900, L=8+Math.random()*20; for(let k=0;k<L;k++){ x.fillStyle=`rgba(${col0},${(1-k/L)*.6})`; x.fillText("0123456789%"[Math.random()*11|0],col,y0-k*18); } } });
+
+// ---- qadamlar ----
+const STEPS=[{t:"lobby"},{t:"intro"}];
+for(let n=1;n<=8;n++) STEPS.push({t:"slide",n});
+STEPS.push({t:"poll"},{t:"pollrev",n:9},{t:"slide",n:10},{t:"slide",n:11});
+for(let i=0;i<Q.length;i++){ STEPS.push({t:"q",i},{t:"rev",i}); if(i===4) STEPS.push({t:"lb"}); }
+STEPS.push({t:"final"},{t:"fb"},{t:"thx",n:13});
+
+let step=0, st={}, players={}, answers={}, poll={}, fbCount=0, fbAll={}, busy=false, SID=null, autoRev=-1, vidURL=null;
+
+// ---- PIN ----
+(async()=>{
+  const saved=lsx.getItem("soliq_hk");
+  if(saved && await tryKey(saved)) return start();
+  const ov=document.createElement("div"); ov.className="ov";
+  ov.innerHTML=`<div class="pinbox"><div class="kick">BOSHLOVCHI</div><h2 style="font-size:34px;margin:12px 0 20px">PIN kodni kiriting</h2><input id="pin" type="password" inputmode="numeric" autocomplete="off"><p id="pe">Enter — kirish</p></div>`;
+  document.body.appendChild(ov); const inp=$("#pin"); inp.focus();
+  inp.onkeydown=async e=>{ e.stopPropagation(); if(e.key!=="Enter") return; const hk=await sha(inp.value.trim()+"|soliq-key");
+    if(await tryKey(hk)){ lsx.setItem("soliq_hk",hk); ov.remove(); start(); } else { $("#pe").textContent="❌ PIN notoʻgʻri"; inp.value=""; } };
+})();
+
+function newRoom(){ ROOM=String(Math.floor(1000+Math.random()*9000)); const d=new Date(); const p=n=>String(n).padStart(2,"0");
+  SID=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}_${ROOM}`;
+  lsx.setItem("soliq_room",ROOM); lsx.setItem("soliq_sid",SID); }
+function start(){
+  if(DEMO&&!qs.has("demo")) toast("⚠️ Firebase yuklanmadi — internetni tekshirib, sahifani yangilang (F5)");
+  ROOM = ROOM || lsx.getItem("soliq_room") || ""; SID = lsx.getItem("soliq_sid");
+  if(!ROOM || !SID || !SID.endsWith("_"+ROOM)) newRoom();
+  try{ history.replaceState(null,"","?host=1&room="+ROOM+(DEMO&&qs.has("demo")?"&demo=1":"")); }catch(e){}
+  Store.once("state").then(s=>{ if(s && typeof s.step==="number"){ step=Math.min(s.step,STEPS.length-1); if(STEPS[step].t==="intro") step=0; } else Store.set("meta",{sid:SID,created:Store.now()}); go(step,true); });
+  Store.on("players",v=>{ players=v||{}; refreshDyn(); });
+  Store.on("answers",v=>{ answers=v||{}; refreshDyn(); });
+  Store.on("poll",v=>{ poll=v||{}; refreshDyn(); });
+  Store.on("fb",v=>{ fbAll=v||{}; fbCount=Object.keys(fbAll).length; refreshDyn(); });
+  requestAnimationFrame(tick);
+}
+const joinURL=()=>location.origin+location.pathname+"?room="+ROOM+(qs.has("demo")?"&demo=1":"");
+const plist=()=>Object.entries(players).map(([id,p])=>({id,...p})).filter(p=>p.name);
+
+// ---- ballar ----
+function computeScores(upto){ const sc={}, res={};
+  plist().forEach(p=>sc[p.id]=0);
+  for(let i=0;i<=upto;i++){ const a=answers[i]||{}, T=(Q[i].sec||15)*1000; res[i]={};
+    Object.entries(a).forEach(([pid,x])=>{ if(!(pid in sc)) return; let ok,pts;
+      if(Q[i].vote){ ok=1; pts=500; } else { ok = x.c===HA[i] ? 1 : 0; pts = ok ? Math.round(500+500*(1-Math.min(Math.max(x.ms,0),T)/T)) : 0; }
+      res[i][pid]={ok,pts}; sc[pid]+=pts; }); }
+  return {sc,res}; }
+function lastRevealed(){ let r=-1; for(let k=0;k<=step;k++){ if(STEPS[k].t==="rev") r=STEPS[k].i; } return r; }
+async function writeScores(i){ const {sc,res}=computeScores(i); const up={}; Object.entries(sc).forEach(([id,v])=>up[id+"/score"]=v);
+  await Store.update("players",up); await Store.set("results/"+i,res[i]||{}); }
+const ranked=()=>{ return plist().sort((a,b)=>(b.score||0)-(a.score||0)||(a.joined||0)-(b.joined||0)); };
+
+// ---- tarix (shifrlangan) ----
+let histTimer=null;
+function saveHist(){ clearTimeout(histTimer); histTimer=setTimeout(async()=>{ const upto=lastRevealed(); const {sc,res}=computeScores(Math.max(upto,-1));
+  const P={}; plist().forEach(p=>{ const a={}; for(let i=0;i<=upto;i++){ const x=(answers[i]||{})[p.id]; if(x) a[i]=[x.c,x.ms,(res[i][p.id]||{}).ok?1:0]; } P[p.id]={name:p.name,av:p.av,score:sc[p.id]||0,a}; });
+  const pc=[0,0,0,0]; Object.values(poll).forEach(c=>{ if(c>=0&&c<4) pc[c]++; });
+  const fb=Object.values(fbAll).map(f=>({r:f.r,t:f.t||""}));
+  const obj={v:1,sid:SID,room:ROOM,date:SID.slice(0,10),time:SID.slice(11,15),upto,P,poll:pc,fb,ha:HA};
+  try{ lsx.setItem("soliq_hist_"+SID,JSON.stringify(obj)); }catch(e){}
+  try{ await Store.set(HIST+"/"+SID,await enc(obj)); }catch(e){} },600); }
+
+// ---- o'tishlar ----
+const W=1600,H=900,FX=$("#fx"),fx=FX.getContext("2d"),CH="0123456789%$SOLIQ";
+function rainFx(swap){ return new Promise(ok=>{ const cols=[]; for(let x=0;x<W;x+=22) cols.push({x,d:Math.random()*.35,ch:[...Array(60)].map(()=>CH[Math.random()*CH.length|0])});
+  const t0=performance.now(), D=3000; let sw=false;
+  (function f(t){ const e=t-t0,k=e/D; fx.clearRect(0,0,W,H); fx.font="18px monospace"; const dark=k<.45?k/.45:Math.max(0,1-(k-.45)/.55);
+    fx.fillStyle=`rgba(0,0,0,${.92*dark})`; fx.fillRect(0,0,W,H);
+    cols.forEach(c=>{ const p=Math.max(0,(k-c.d*.5)/.9), head=p*(H+400)-100; for(let i=0;i<16;i++){ const y=head-i*22; if(y<-20||y>H+20) continue; const a=(1-i/16)*Math.min(1,dark*1.6+.2);
+      fx.fillStyle=i===0?`rgba(225,255,232,${a})`:`rgba(88,253,118,${a*.8})`; fx.fillText(c.ch[(i+Math.floor(e/90))%60],c.x,y); } });
+    if(!sw&&k>.45){ sw=true; swap(); } if(e<D) requestAnimationFrame(f); else { fx.clearRect(0,0,W,H); ok(); } })(t0); }); }
+function coinFx(swap){ return new Promise(ok=>{ const C=[]; for(let i=0;i<34;i++) C.push({x:80+Math.random()*(W-160),y:-40-Math.random()*500,vy:2.2+Math.random()*1.6,r:12+Math.random()*10,s:Math.random()*6,sw:Math.random()*6});
+  const t0=performance.now(),D=3200; let sw=false;
+  (function f(t){ const e=t-t0; fx.clearRect(0,0,W,H); const fade=e<1300?e/1300:e<1700?1:Math.max(0,1-(e-1700)/1300);
+    fx.fillStyle=`rgba(20,12,0,${.75*fade})`; fx.fillRect(0,0,W,H);
+    C.forEach(c=>{ c.y+=c.vy; c.s+=.06; c.sw+=.03; const x=c.x+Math.sin(c.sw)*18, sx=Math.abs(Math.cos(c.s)); const g=fx.createRadialGradient(x-c.r*.3,c.y-c.r*.3,1,x,c.y,c.r);
+      g.addColorStop(0,"#fff4c2"); g.addColorStop(.45,"#ffd36a"); g.addColorStop(1,"#a8740f"); fx.globalAlpha=Math.min(1,(D-e)/700); fx.fillStyle=g; fx.shadowColor="#ffd36a"; fx.shadowBlur=14;
+      fx.beginPath(); fx.ellipse(x,c.y,c.r*Math.max(.25,sx),c.r,0,0,7); fx.fill(); fx.shadowBlur=0; fx.globalAlpha=1; });
+    if(!sw&&e>1500){ sw=true; swap(); } if(e<D) requestAnimationFrame(f); else { fx.clearRect(0,0,W,H); ok(); } })(t0); }); }
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function fadeIn(el,ms,dy){ el.style.transition="none"; el.style.opacity=0; el.style.transform=`translateY(${dy}px)`; void el.offsetWidth; el.style.transition=`opacity ${ms}ms cubic-bezier(.2,.7,.2,1),transform ${ms}ms cubic-bezier(.2,.7,.2,1)`; el.style.opacity=1; el.style.transform="none"; }
+let typeTok=0;
+async function reveal(sl){ const tok=++typeTok; const h=sl.querySelector("h1"); const late=$$(".sub,.bot,.bars,.calc,.src,.banner",sl); late.forEach(e=>e.style.opacity=0);
+  if(h){ h.style.opacity=0; await wait(200); if(tok!==typeTok) return; fadeIn(h,1000,26); await wait(900); }
+  for(const e of late){ if(tok!==typeTok) return; fadeIn(e,800,20); await wait(380); } }
+async function typeThx(sl){ const tok=++typeTok; const els=[$(".thx",sl),$(".thp",sl),$(".thg",sl)];
+  const txt=els.map(e=>e.dataset.t||(e.dataset.t=e.textContent)); els.forEach(e=>e.textContent="");
+  await wait(600);
+  for(let k=0;k<3;k++){ const e=els[k], ch=[...txt[k]];
+    for(let i=0;i<ch.length;i++){ if(tok!==typeTok) return;
+      if(k===0&&i===14){ for(const x of ["x"]){ e.innerHTML=ch.slice(0,i).join("")+x+'<span class="cur"></span>'; await wait(160); } await wait(420); e.innerHTML=ch.slice(0,i).join("")+'<span class="cur"></span>'; await wait(170); }
+      e.innerHTML=ch.slice(0,i+1).join("")+'<span class="cur"></span>'; await wait(ch[i]===" "?140+Math.random()*60:(k?55:80)+Math.random()*50); }
+    await wait(350); e.textContent=txt[k]; await wait(300); } }
+
+function showSlide(n){ $$(".s").forEach(e=>e.classList.remove("on")); $("#dyn").classList.remove("on"); const sl=$("#s"+n); sl.classList.add("on");
+  if(n===13) typeThx(sl); else reveal(sl); if(n===5) calcInit(); if(n===9) pollRevFill(); }
+function showDyn(){ ++typeTok; $$(".s").forEach(e=>e.classList.remove("on")); const d=$("#dyn"); d.classList.remove("on"); void d.offsetWidth; d.classList.add("on"); }
+const isSl=s=>s&&(s.t==="slide"||s.t==="pollrev");
+
+async function go(n,first){ if(busy) return; n=Math.max(0,Math.min(STEPS.length-1,n)); const prev=STEPS[step], S=STEPS[n], fwd=n>step; step=n;
+  const extra={}; if(S.t==="q") extra.qStart=Store.now(); if(S.t==="intro") extra.introStart=null;
+  st={step:n,t:S.t,n:S.n??null,i:S.i??null,...extra,ts:Store.now()};
+  await Store.set("state",st);
+  if(S.t==="rev"){ await writeScores(S.i); saveHist(); }
+  if(S.t==="final"||S.t==="fb"||S.t==="thx") saveHist();
+  hideVideo();
+  if(S.t==="intro"){ showDyn(); $("#dyn").innerHTML=`<div class="ihint">${vidURL?"▶ Video boshlanmoqda…":"V — kirish videosini tanlash · → — oʻtkazib yuborish"}</div>`; $("#dyn").style.background="#000"; if(vidURL) playVideo(); return; }
+  $("#dyn").style.background="";
+  if(isSl(S)){
+    if(!first && fwd && isSl(prev)){ busy=true; await (S.n===8?coinFx:rainFx)(()=>showSlide(S.n)); busy=false; }
+    else if(!first && fwd && prev && prev.t==="intro"){ showSlide(S.n); }
+    else if(!first && fwd){ busy=true; await rainFx(()=>showSlide(S.n)); busy=false; }
+    else showSlide(S.n);
+    return; }
+  if(S.t==="thx"){ busy=true; await rainFx(()=>showSlide(13)); busy=false; return; }
+  showDyn(); renderDyn(true); }
+
+function refreshDyn(){ const S=STEPS[step]; if(!S) return; if(["lobby","poll","q","rev","lb","final","fb"].includes(S.t)) renderDyn(false); if(S.t==="pollrev") pollRevFill(); if(S.t==="rev") saveHist(); }
+let lastKey="";
+function renderDyn(force){ const S=STEPS[step], d=$("#dyn"), pl=plist();
+  if(S.t==="lobby"){
+    if(force||!$(".lob",d)){ d.innerHTML=`<div class="lob"><div><div class="qrbox" id="qr"></div><div class="url">${esc(joinURL())}</div><div class="code">Xona: <b>${ROOM}</b></div></div>
+      <div><div class="kick">SOLIQ · 39–40-MAVZULAR</div><h2 style="margin-top:12px">Telefoningizdan<br><span class="g2">QR kodni skanerlang</span></h2><div class="cnt" id="lcnt"></div><div class="avs" id="lavs"></div></div></div><div class="vidok" id="vok"></div>`;
+      try{ new QRCode($("#qr"),{text:joinURL(),width:448,height:448,correctLevel:QRCode.CorrectLevel.M}); }catch(e){ $("#qr").innerHTML='<div style="color:#000;font-size:28px;padding:30px">QR yuklanmadi — havolani oching</div>'; } }
+    $("#lcnt").textContent=`Qoʻshildi: ${pl.length} kishi`;
+    const have=new Set($$("#lavs .avt").map(e=>e.dataset.id));
+    pl.sort((a,b)=>(a.joined||0)-(b.joined||0)).forEach(p=>{ if(have.has(p.id)) return; const e=document.createElement("div"); e.className="avt"; e.dataset.id=p.id; e.innerHTML=`<img src="${AV(p.av)}"><span>${esc(p.name)}</span>`; $("#lavs").appendChild(e); });
+    $$("#lavs .avt").forEach(e=>{ if(!players[e.dataset.id]) e.remove(); });
+    $("#vok").textContent = vidURL ? "✓ video" : "";
+    return; }
+  if(S.t==="poll"){ const pc=[0,0,0,0]; Object.values(poll).forEach(c=>{ if(c>=0&&c<4) pc[c]++; }); const tot=pc.reduce((a,b)=>a+b,0), mx=Math.max(1,...pc);
+    if(force||!$(".pollv",d)){ d.style.background="radial-gradient(ellipse at 50% 70%,#2a1c00 0%,#000 72%)";
+      d.innerHTML=`<div class="qv pollv"><div class="qn" style="color:var(--w)">OVOZ BERING · TELEFONINGIZDA</div><div class="qt">${esc(POLL.q)}</div>
+      <div class="bars" style="top:330px">${POLL.o.map((o,k)=>`<div class="br"><span>${SH[k]} ${esc(o)}</span><div class="tr"><i id="pb${k}" style="width:0"></i></div><b id="pn${k}">0</b></div>`).join("")}</div>
+      <div class="cnt2" id="ptot"></div></div>`; }
+    pc.forEach((c,k)=>{ $("#pb"+k).style.width=(c/mx*100)+"%"; $("#pn"+k).textContent=c; }); $("#ptot").textContent=`Ovoz berdi: ${tot} / ${pl.length}`; return; }
+  d.style.background="";
+  if(S.t==="q"||S.t==="rev"){ const i=S.i, q=Q[i], a=answers[i]||{}, n=Object.keys(a).filter(k=>players[k]).length, rev=S.t==="rev";
+    const cnt=[0,0,0,0]; Object.entries(a).forEach(([k,x])=>{ if(players[k]&&x.c>=0&&x.c<4) cnt[x.c]++; });
+    const key=S.t+i;
+    if(force||lastKey!==key||!$(".qv",d)){ lastKey=key;
+      d.innerHTML=`<div class="qv ${rev?"rev":""} ${q.vote?"vote":""}"><div class="qn">SAVOL ${i+1} / ${Q.length}${q.vote?" · HAZIL":""}</div><div class="qt">${esc(q.q)}</div>
+       ${rev?"":`<div class="timer"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="8"/><circle id="tc" cx="50" cy="50" r="44" fill="none" stroke="#58fd76" stroke-width="8" stroke-linecap="round" stroke-dasharray="276.5" stroke-dashoffset="0"/></svg><b id="tn"></b></div>`}
+       <div class="ans">${q.o.map((o,k)=>`<div class="op op${k} ${rev&&!q.vote&&k===HA[i]?"ok":""}"><span class="sh2">${SH[k]}</span>${esc(o)}<span class="ct" id="oc${k}">${cnt[k]}</span></div>`).join("")}</div>
+       ${rev?`<div class="xp">${q.vote?"😄 ":"✅ "}${esc(HX[i]||"")}</div>`:`<div class="cnt2" id="qcnt"></div>`}</div>`; }
+    if(rev) cnt.forEach((c,k)=>{ const e=$("#oc"+k); if(e) e.textContent=c; });
+    else { const e=$("#qcnt"); if(e) e.textContent=`Javob berdi: ${n} / ${pl.length}`; }
+    return; }
+  if(S.t==="lb"){ const r=ranked().slice(0,5);
+    d.innerHTML=`<div class="lb"><div class="kick" style="text-align:center">YARIM YOʻL · 5 / 10</div><h2>Hozirgi peshqadamlar</h2>${r.map((p,k)=>`<div class="lbr" style="animation-delay:${.15*k}s"><span class="rk">${k+1}</span><img src="${AV(p.av)}"><span>${esc(p.name)}</span><span class="sc">${fmt(p.score||0)}</span></div>`).join("")||'<p class="sub" style="text-align:center">Hali ishtirokchi yoʻq</p>'}</div>`; return; }
+  if(S.t==="final"){ const r=ranked(); const t=[r[1],r[0],r[2]], hgt=[220,290,160], lab=[2,1,3];
+    d.innerHTML=`<div class="lb"><div class="kick" style="text-align:center">YAKUNIY NATIJA</div><h2>Gʻoliblar</h2><div class="pod">${t.map((p,k)=>p?`<div class="pc" style="animation-delay:${[.5,1.1,0][k]}s"><img src="${AV(p.av)}"><div class="nm">${esc(p.name)}</div><div class="pt">${fmt(p.score||0)}</div><div class="blk" style="height:${hgt[k]}px">${lab[k]}</div></div>`:"").join("")}</div>
+     <div class="others">${r.slice(3,10).map((p,k)=>`<span>${k+4}. ${esc(p.name)} — ${fmt(p.score||0)}</span>`).join("")}</div></div>`;
+    if(force) confetti(); return; }
+  if(S.t==="fb"){ if(force||!$(".fbv",d)) d.innerHTML=`<div class="center fbv"><div class="kick">FIKRINGIZ MUHIM</div><h1 style="font-size:96px;font-weight:800;margin-top:16px">Darsni <span class="g">baholang</span></h1>
+      <div class="sub" style="margin-top:24px">Telefoningizda bitta tugmani bosing — ismingiz koʻrinmaydi</div><div class="sub mono" style="margin-top:40px;font-size:54px;color:var(--w)" id="fbn"></div></div>`;
+    $("#fbn").textContent=`${fbCount} / ${pl.length}`; return; }
+}
+function confetti(){ const t0=performance.now(), P=[...Array(160)].map(()=>({x:Math.random()*W,y:-Math.random()*H,v:2+Math.random()*3,r:Math.random()*6,c:["#58fd76","#ffd36a","#ffffff","#7cc7ff"][Math.random()*4|0],s:4+Math.random()*6}));
+  (function f(t){ fx.clearRect(0,0,W,H); P.forEach(p=>{ p.y+=p.v; p.r+=.1; fx.fillStyle=p.c; fx.save(); fx.translate(p.x+Math.sin(p.r)*10,p.y); fx.rotate(p.r); fx.fillRect(-p.s/2,-p.s/2,p.s,p.s*1.6); fx.restore(); });
+    if(t-t0<6000) requestAnimationFrame(f); else fx.clearRect(0,0,W,H); })(t0); }
+
+// ---- kalkulyator ----
+let calcV=8e9, calcFree=false;
+function calcInit(){ const sl=$("#s5"); const r=$("#crng",sl); const lo=Math.log(1e8), hi=Math.log(5e10);
+  r.value=Math.round((Math.log(calcV)-lo)/(hi-lo)*1000);
+  const upd=()=>{ const raw=Math.exp(lo+(hi-lo)*r.value/1000); const nice=[1e8,2e8,5e8,1e9,2e9,5e9,8e9,1e10,2e10,5e10]; let v=raw; const step=raw<1e9?1e8:raw<1e10?5e8:1e9; v=Math.round(raw/step)*step; nice.forEach(x=>{ if(Math.abs(x-raw)/x<.04) v=x; }); calcV=v;
+    $("#cval").textContent=fmt(v)+" soʻm"; const res=$("#cres"); if(calcFree){ res.textContent="0 soʻm"; res.classList.add("zero"); $("#cfor").textContent="Imtiyozli korxona — soliqdan ozod"; }
+    else { res.textContent=fmt(v*0.015)+" soʻm"; res.classList.remove("zero"); $("#cfor").textContent=fmt(v)+" × 1,5% ="; } };
+  r.oninput=upd; $("#ctog").onclick=()=>{ calcFree=!calcFree; $("#ctog").classList.toggle("on",calcFree); upd(); }; upd(); window.__calcUpd=upd; }
+// ---- Toshkent so'rovnomasi natijasi ----
+function pollRevFill(){ const b=$("#pollban"); if(!b) return; const pc=[0,0,0,0]; Object.values(poll).forEach(c=>{ if(c>=0&&c<4) pc[c]++; }); const tot=pc.reduce((a,b)=>a+b,0);
+  b.textContent = tot ? `Toʻgʻri javob: ~1,6 trln soʻm — ${pc[2]} / ${tot} kishi topdi 🎯` : "Toʻgʻri javob: ~1,6 trln soʻm 🎯"; }
+
+// ---- video ----
+const V=$("#video");
+$("#vf").onchange=e=>{ const f=e.target.files[0]; if(!f) return; if(vidURL) URL.revokeObjectURL(vidURL); vidURL=URL.createObjectURL(f); V.src=vidURL; V.load(); toast("✓ Video tanlandi: "+f.name); refreshDyn(); if(STEPS[step].t==="intro") go(step); };
+function playVideo(){ V.style.display="block"; V.currentTime=0; V.muted=false; const p=V.play(); if(p&&p.catch) p.catch(()=>{ toast("▶ Videoni boshlash uchun P ni bosing"); }); }
+V.addEventListener("playing",()=>{ if(STEPS[step].t!=="intro") return; Store.update("state",{introStart:Store.now()-V.currentTime*1000}); });
+V.addEventListener("pause",()=>{ if(STEPS[step].t==="intro"&&!V.ended) Store.update("state",{introStart:null,paused:1}); });
+V.addEventListener("ended",()=>{ if(STEPS[step].t==="intro") go(step+1); });
+function hideVideo(){ if(STEPS[step].t!=="intro"){ V.pause(); V.style.display="none"; } }
+
+// ---- vaqt nazorati (avto javob ochish) ----
+function tick(){ const S=STEPS[step];
+  if(S&&S.t==="q"&&st.qStart){ const T=(Q[S.i].sec||15)*1000, el=Store.now()-st.qStart, left=Math.max(0,T-el);
+    const tn=$("#tn"), tc=$("#tc"); if(tn){ tn.textContent=Math.ceil(left/1000); tc.style.strokeDashoffset=276.5*(1-left/T); tc.style.stroke=left<5000?"#ff5c6c":"#58fd76"; }
+    const pl=plist().length, n=Object.keys(answers[S.i]||{}).filter(k=>players[k]).length;
+    if(autoRev!==step && !busy && (left<=0 || (pl>0 && n>=pl && el>1500))){ autoRev=step; setTimeout(()=>{ if(STEPS[step].t==="q"&&autoRev===step) go(step+1); }, left<=0?300:900); } }
+  requestAnimationFrame(tick); }
+
+// ---- klavishlar ----
+let resetArm=0;
+document.addEventListener("keydown",e=>{ if($(".ov")&&e.key!=="Escape"&&e.key!=="h"&&e.key!=="H") return; if(e.target.tagName==="INPUT"&&e.target.type!=="range"||e.target.tagName==="TEXTAREA") return;
+  const k=e.key;
+  if(k==="ArrowRight"||k==="PageDown"||k===" "){ e.preventDefault(); go(step+1); }
+  else if(k==="ArrowLeft"||k==="PageUp"){ e.preventDefault(); go(step-1); }
+  else if((k==="ArrowUp"||k==="ArrowDown")&&STEPS[step].n===5){ e.preventDefault(); const r=$("#crng"); r.value=+r.value+(k==="ArrowUp"?25:-25); window.__calcUpd&&window.__calcUpd(); }
+  else if(k==="b"||k==="B"||k==="и"||k==="И"){ const b=$("#black"); b.style.display=b.style.display==="block"?"none":"block"; }
+  else if(k==="f"||k==="F"||k==="а"||k==="А"){ if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}); else document.exitFullscreen(); }
+  else if(k==="v"||k==="V"||k==="м"||k==="М"){ $("#vf").click(); }
+  else if(k==="p"||k==="P"||k==="з"||k==="З"){ if(STEPS[step].t==="intro"&&vidURL){ if(V.paused){ V.style.display="block"; V.play(); } else V.pause(); } }
+  else if(k==="h"||k==="H"||k==="р"||k==="Р"){ const o=$(".ov.hist-ov"); if(o) o.remove(); else openHist(); }
+  else if(k==="e"||k==="E"||k==="у"||k==="У"){ exportCSV(null); }
+  else if(k==="Escape"){ const o=$(".ov.hist-ov"); if(o) o.remove(); }
+  else if(k==="Home"){ go(0); }
+  else if(k==="r"||k==="R"||k==="к"||k==="К"||k==="↺"){ if(Date.now()-resetArm<1500){ saveHist(); setTimeout(()=>{ newRoom(); try{ history.replaceState(null,"","?host=1&room="+ROOM+(qs.has("demo")?"&demo=1":"")); }catch(e){} location.reload(); },900); toast("↺ Yangi xona ochilmoqda…"); } else { resetArm=Date.now(); toast("Yangi xona uchun R ni yana bir marta bosing (natijalar tarixda saqlanadi)"); } }
+});
+
+// ---- TARIX ----
+async function loadHist(){ const out={};
+  for(let i=0;i<lsx.length;i++){ const k=lsx.key(i); if(k&&k.startsWith("soliq_hist_")){ try{ const o=JSON.parse(lsx.getItem(k)); out[o.sid]=o; }catch(e){} } }
+  try{ const all=await Store.once(HIST); if(all) for(const [sid,e] of Object.entries(all)){ try{ const o=await dec(e); out[sid]=o; }catch(err){} } }catch(e){}
+  return Object.values(out).sort((a,b)=>b.sid.localeCompare(a.sid)); }
+const norm=s=>String(s||"").toLowerCase().replace(/[ʻʼ'`‘’]/g,"").replace(/\s+/g," ").trim();
+function analyse(sess,all){ const graded=[...Array(10).keys()].filter(i=>!Q[i].vote&&i<=sess.upto);
+  const rows=Object.values(sess.P).map(p=>{ let ok=0,ans=0,ms=0,msn=0; const weak=[];
+    for(let i=0;i<=sess.upto;i++){ const a=p.a[i]; if(a){ ans++; } if(Q[i].vote) continue; if(a&&a[2]){ ok++; ms+=a[1]; msn++; } else weak.push(TOPIC[i]); }
+    const prev=all.filter(s=>s.sid<sess.sid).map(s=>Object.values(s.P).find(x=>norm(x.name)===norm(p.name))&&s).filter(Boolean)[0];
+    let dyn=""; if(prev){ const pp=Object.values(prev.P).find(x=>norm(x.name)===norm(p.name)); const pv=[...Array(10).keys()].filter(i=>!Q[i].vote&&pp.a[i]&&pp.a[i][2]).length; const d=ok-pv; dyn=(d>0?"▲ +"+d:d<0?"▼ "+d:"= 0")+" toʻgʻri ("+prev.date+")"; }
+    return {name:p.name,av:p.av,score:p.score,ok,tot:graded.length,ans,all:sess.upto+1,spd:msn?(ms/msn/1000):null,weak,dyn}; }).sort((a,b)=>b.score-a.score);
+  const perQ=graded.map(i=>{ const ps=Object.values(sess.P); const n=ps.length||1; const c=ps.filter(p=>p.a[i]&&p.a[i][2]).length; return {i,c,pct:Math.round(c/n*100)}; });
+  return {rows,perQ}; }
+async function openHist(){ const ov=document.createElement("div"); ov.className="ov hist-ov"; ov.innerHTML=`<div class="hist"><h2>📜 Tarix</h2><p class="muted">Faqat sizga koʻrinadi. Proyektor oʻchiq paytda oching. Esc — yopish.</p><div id="hl" class="card">Yuklanmoqda…</div><div id="hd"></div></div>`;
+  document.body.appendChild(ov); const all=await loadHist();
+  if(!all.length){ $("#hl").textContent="Hali saqlangan dars yoʻq."; return; }
+  $("#hl").innerHTML=all.map((s,k)=>`<button class="bt" data-k="${k}">${s.date} ${s.time.slice(0,2)}:${s.time.slice(2)} · xona ${s.room} · ${Object.keys(s.P).length} kishi</button>`).join("");
+  $$("#hl .bt").forEach(b=>b.onclick=()=>{ $$("#hl .bt").forEach(x=>x.classList.remove("sel")); b.classList.add("sel"); showSess(all[+b.dataset.k],all); });
+  $("#hl .bt").click(); }
+function showSess(s,all){ const {rows,perQ}=analyse(s,all); const ps=rows.length; const avg=ps?Math.round(rows.reduce((a,r)=>a+r.score,0)/ps):0;
+  const hard=[...perQ].sort((a,b)=>a.pct-b.pct)[0]; const fbR=[0,0,0,0,0]; (s.fb||[]).forEach(f=>{ if(f.r>=1&&f.r<=4) fbR[f.r]++; });
+  const em={4:"😍",3:"😊",2:"😐",1:"😕"};
+  $("#hd").innerHTML=`
+   <div class="card"><b>Guruh xulosasi</b> · ${ps} ishtirokchi · oʻrtacha ball ${fmt(avg)} · ochilgan savollar: ${s.upto+1}/10
+    ${hard?`<div style="margin-top:8px">Eng qiyin savol: <b>${hard.i+1}-savol (${TOPIC[hard.i]})</b> — ${hard.pct}% topdi</div>`:""}
+    <table><tr><th>Savol</th><th>Mavzu</th><th>Toʻgʻri topdi</th></tr>${perQ.map(x=>`<tr><td>${x.i+1}</td><td>${TOPIC[x.i]}</td><td><span class="bar" style="width:${x.pct*2}px"></span> ${x.pct}% (${x.c})</td></tr>`).join("")}</table>
+    <div style="margin-top:10px">Toshkent soʻrovi: ${POLL.o.map((o,k)=>`${o} — <b>${(s.poll||[])[k]||0}</b>`).join(" · ")}</div></div>
+   <div class="card"><b>Ishtirokchilar</b> <button class="bt" id="xcsv">⬇ Excel (CSV)</button>
+    <table><tr><th>#</th><th></th><th>Ism</th><th>Ball</th><th>Toʻgʻri</th><th>Javob berdi</th><th>Oʻrt. tezlik</th><th>Qiynalgan mavzular</th><th>Dinamika</th></tr>
+    ${rows.map((r,k)=>`<tr><td>${k+1}</td><td><img src="${AV(r.av)}"></td><td>${esc(r.name)}</td><td>${fmt(r.score)}</td><td>${r.ok}/${r.tot}</td><td>${r.ans}/${r.all}</td><td>${r.spd!=null?r.spd.toFixed(1)+" s":"—"}</td><td class="muted">${esc(r.weak.join(", "))||"✓ hammasi"}</td><td class="${r.dyn.startsWith("▲")?"up":r.dyn.startsWith("▼")?"dn":"muted"}">${esc(r.dyn)||"birinchi dars"}</td></tr>`).join("")}</table></div>
+   <div class="card"><b>Soʻrovnoma (anonim)</b> · ${(s.fb||[]).length} ta javob · ${[4,3,2,1].map(r=>`${em[r]} ${fbR[r]}`).join(" &nbsp; ")}
+    ${(s.fb||[]).filter(f=>f.t).map(f=>`<div class="fbitem">${em[f.r]||""} ${esc(f.t)}</div>`).join("")||'<div class="muted" style="margin-top:6px">Yozma fikr qoldirilmagan.</div>'}</div>`;
+  $("#xcsv").onclick=()=>exportCSV(s,all); }
+async function exportCSV(s,all){ if(!all) all=await loadHist(); if(!s) s=all.find(x=>x.sid===SID)||all[0]; if(!s){ toast("Tarix boʻsh"); return; }
+  const {rows,perQ}=analyse(s,all); const q=v=>`"${String(v).replace(/"/g,'""')}"`;
+  const L=[["#","Ism","Ball","Toʻgʻri javoblar","Javob berdi","Oʻrtacha tezlik (s)","Qiynalgan mavzular","Dinamika"].map(q).join(";")];
+  rows.forEach((r,k)=>L.push([k+1,r.name,r.score,`${r.ok}/${r.tot}`,`${r.ans}/${r.all}`,r.spd!=null?r.spd.toFixed(1).replace(".",","):"",r.weak.join(", "),r.dyn].map(q).join(";")));
+  L.push(""); L.push([q("Savol"),q("Mavzu"),q("Toʻgʻri %")].join(";")); perQ.forEach(x=>L.push([x.i+1,q(TOPIC[x.i]),x.pct].join(";")));
+  const blob=new Blob(["﻿"+L.join("\r\n")],{type:"text/csv;charset=utf-8"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`soliq_natija_${s.sid}.csv`; a.click(); toast("⬇ "+a.download); }
+window.__host={go,get step(){return step},STEPS,computeScores};
+}
+
+/* ==========================================================================
+   6) TELEFON (ISHTIROKCHI)
+   ========================================================================== */
+function phoneMain(){
+document.body.className="ph";
+$("#root").innerHTML=`<canvas id="prain"></canvas><div id="ph"></div>`;
+const box=$("#ph");
+if(!ROOM){ box.innerHTML=`<div class="hero"><div class="big">Xona topilmadi</div><div class="fact">Katta ekrandagi QR kodni qayta skanerlang.</div></div>`; return; }
+const sst=(()=>{ try{ sessionStorage.setItem("_t","1"); return sessionStorage; }catch(e){ return {getItem:()=>null,setItem:()=>{}}; } })();
+let PID=sst.getItem("soliq_pid_"+ROOM) || (DEMO?null:lsx.getItem("soliq_pid_"+ROOM)); if(!PID) PID="p"+Math.random().toString(36).slice(2,10);
+sst.setItem("soliq_pid_"+ROOM,PID); if(!DEMO) lsx.setItem("soliq_pid_"+ROOM,PID);
+let st=null, me=null, players={}, avs={}, myAns={}, results={}, myPoll=null, fbDone=false, view="", selAv=null, introT=null;
+Store.on("state",v=>{ st=v; render(); });
+Store.on("players/"+PID,v=>{ me=v; render(); });
+Store.on("players",v=>{ players=v||{}; if(view.startsWith("rk")) { view=""; render(); } });
+Store.on("avatars",v=>{ avs=v||{}; markTaken(); });
+Store.on("answers",v=>{ myAns={}; Object.entries(v||{}).forEach(([i,a])=>{ if(a&&a[PID]) myAns[i]=a[PID]; }); render(); });
+Store.on("results",v=>{ results=v||{}; render(); });
+Store.on("poll/"+PID,v=>{ myPoll=v; render(); });
+Store.on("fbDone/"+PID,v=>{ fbDone=!!v; render(); });
+
+const rainC=$("#prain"); let rainOn=false;
+function rain(on){ rainOn=on; rainC.style.display=on?"block":"none"; if(on&&!rainC.__a){ rainC.__a=1; const c=rainC, x=c.getContext("2d"); let cols=[];
+  const rs=()=>{ c.width=innerWidth; c.height=innerHeight; cols=[...Array(Math.ceil(c.width/16))].map(()=>Math.random()*c.height); }; rs(); addEventListener("resize",rs);
+  (function f(){ if(rainOn){ x.fillStyle="rgba(2,10,4,.12)"; x.fillRect(0,0,c.width,c.height); x.fillStyle="#58fd76"; x.font="14px monospace";
+    cols.forEach((y,k)=>{ x.fillText("0123456789%"[Math.random()*11|0],k*16,y); cols[k]= y>c.height&&Math.random()>.97 ? 0 : y+16; }); } setTimeout(()=>requestAnimationFrame(f),50); })(); } }
+
+const bar=()=>me?`<div class="pbar"><img src="${AV(me.av)}"><b>${esc(me.name)}</b><span class="sp"></span><span class="pts">${(me.score||0).toLocaleString("ru-RU")} ball</span></div>`:"";
+const avHtml=(mood,bubble)=>`<div class="me ${mood||""}">${mood==="sad"?'<span class="cloud">🌧</span>':""}<img src="${AV(me.av)}"><span class="bub">${bubble||""}</span><span class="tear"></span></div>`;
+function set(key,html){ if(view===key) return false; view=key; box.innerHTML=html; return true; }
+function markTaken(){ $$(".av",box).forEach(e=>{ const n=+e.dataset.n, own=avs[n]; e.classList.toggle("taken", !!own && own!==PID); if(own&&own!==PID&&selAv===n){ selAv=null; e.classList.remove("sel"); const b=$("#jbtn"); if(b) b.disabled=true; } }); }
+function sparks(){ const r=($(".me",box)||box).getBoundingClientRect(); for(let i=0;i<20;i++){ const e=document.createElement("div"); e.className="spark"; e.textContent=["⭐","✨","🪙","🎊"][i%4];
+  e.style.left=(r.left+r.width/2)+"px"; e.style.top=(r.top+r.height/3)+"px"; e.style.setProperty("--dx",(Math.random()*260-130)+"px"); e.style.setProperty("--dy",(-60-Math.random()*220)+"px"); document.body.appendChild(e); setTimeout(()=>e.remove(),1300); } }
+function rankOf(){ const r=Object.entries(players).filter(([,p])=>p&&p.name).sort((a,b)=>(b[1].score||0)-(a[1].score||0)||(a[1].joined||0)-(b[1].joined||0)); return [r.findIndex(([id])=>id===PID)+1, r.length]; }
+
+function join(){ set("join",`<h2>Darsga qoʻshilish</h2><div class="muted">Ismingizni yozing va qahramon tanlang</div>
+  <input class="inp" id="nm" maxlength="18" placeholder="Ismingiz" autocomplete="off">
+  <div class="grid">${[...Array(30)].map((_,k)=>`<div class="av" data-n="${k+1}"><img src="${AV(k+1)}" style="animation-delay:${(-Math.random()*2.4).toFixed(2)}s"></div>`).join("")}</div>
+  <div class="err" id="jerr"></div><button class="btn" id="jbtn" disabled>Qoʻshilish →</button>`);
+  const chk=()=>{ $("#jbtn").disabled=!(selAv&&$("#nm").value.trim().length>=2); };
+  $("#nm").oninput=chk; $("#nm").value=lsx.getItem("soliq_name")||"";
+  $$(".av",box).forEach(e=>e.onclick=()=>{ $$(".av",box).forEach(x=>x.classList.remove("sel")); e.classList.add("sel"); selAv=+e.dataset.n; vib(20); chk(); });
+  markTaken(); chk();
+  $("#jbtn").onclick=async()=>{ const nm=$("#nm").value.trim().slice(0,18); $("#jbtn").disabled=true;
+    const ok=await Store.claim("avatars/"+selAv,PID); if(!ok){ $("#jerr").textContent="Bu qahramonni boshqa kishi oldi — boshqasini tanlang"; selAv=null; markTaken(); return; }
+    Object.entries(avs).forEach(([n,id])=>{ if(id===PID&&+n!==selAv) Store.set("avatars/"+n,null); });
+    lsx.setItem("soliq_name",nm); await Store.set("players/"+PID,{name:nm,av:selAv,score:0,joined:Store.now()}); vib([30,40,30]); }; }
+
+function render(){
+  if(!st){ set("wait0",`<div class="hero"><div class="big">Ulanmoqda…</div></div>`); return; }
+  if(!me||!me.name){ rain(false); if(view!=="join") join(); return; }
+  const t=st.t;
+  if(t!=="intro"){ clearInterval(introT); introT=null; }
+  if(t==="lobby"){ rain(false); set("lobby",bar()+`<div class="hero">${avHtml("")}<div class="big">Siz qoʻshildingiz!</div><div class="fact">Katta ekranga qarang — dars hozir boshlanadi 👀</div></div>`); return; }
+  if(t==="intro"){ if(!introT){ view=""; introT=setInterval(introTick,150); } introTick(); return; }
+  if(t==="slide"||t==="pollrev"){ rain(false); const p=PH[st.n]||["",""];
+    if(st.n===5){ set("s5",bar()+`<div class="hero"><div class="ring" style="animation:none;font-size:90px">🙋</div><div class="big">${esc(p[0])}</div><div class="fact">Javobni <b>ovoz chiqarib</b> ayting!<br>Kim birinchi?</div></div>`); return; }
+    if(t==="pollrev"){ const ok=myPoll===POLL.a; set("pr"+(myPoll??"n"),bar()+`<div class="hero">${avHtml(myPoll==null?"":ok?"happy":"sad",ok?"🎯":"")}<div class="big">Toʻgʻri javob: ~1,6 trln soʻm</div><div class="fact">${myPoll==null?"Siz ovoz bermadingiz":ok?"Siz topdingiz! 🎉":"Siz: "+esc(POLL.o[myPoll])}</div></div>`); if(ok&&view==="pr"+myPoll) {} return; }
+    set("sl"+st.n,bar()+`<div class="hero dim">${avHtml("")}<div class="big">${esc(p[0])}</div><div class="fact">${esc(p[1])}</div><div class="muted" style="margin-top:14px">Katta ekranga qarang 👀</div></div>`); return; }
+  if(t==="poll"){ rain(false); if(myPoll!=null){ set("pv",bar()+`<div class="hero">${avHtml("")}<div class="big">Ovozingiz qabul qilindi ✓</div><div class="fact">${esc(POLL.o[myPoll])}</div><div class="muted">Natijani katta ekranda koʻramiz</div></div>`); return; }
+    if(set("poll",bar()+`<div class="pq">${esc(POLL.q)}</div><div class="pbtns">${POLL.o.map((o,k)=>`<button class="pb p${k}" data-k="${k}"><span class="s">${SH[k]}</span>${esc(o)}</button>`).join("")}</div>`))
+      $$(".pb",box).forEach(b=>b.onclick=()=>{ vib(25); Store.set("poll/"+PID,+b.dataset.k); }); return; }
+  if(t==="q"){ rain(false); const i=st.i, q=Q[i], mine=myAns[i];
+    if(mine){ set("qa"+i,bar()+`<div class="hero">${avHtml("")}<div class="big">Javob qabul qilindi ✓</div><div class="fact">${SH[mine.c]} ${esc(q.o[mine.c])}</div><div class="muted">Natijani kuting…</div></div>`); return; }
+    const T=(q.sec||15)*1000;
+    if(set("q"+i,bar()+`<div class="ptim"><i id="pti"></i></div><div class="pq">${i+1}. ${esc(q.q)}</div><div class="pbtns">${q.o.map((o,k)=>`<button class="pb p${k}" data-k="${k}"><span class="s">${SH[k]}</span>${esc(o)}</button>`).join("")}</div>`)){
+      let sent=false;
+      $$(".pb",box).forEach(b=>b.onclick=()=>{ if(sent) return; const ms=Store.now()-st.qStart; if(ms>T+800){ toast("⏰ Vaqt tugadi"); return; } sent=true; vib(25);
+        $$(".pb",box).forEach(x=>x.classList.add("dim")); b.classList.remove("dim"); b.classList.add("mine"); Store.set("answers/"+i+"/"+PID,{c:+b.dataset.k,ms:Math.max(0,ms)}); });
+      const tm=()=>{ const e=$("#pti"); if(!e||view!=="q"+i) return; const left=Math.max(0,T-(Store.now()-st.qStart)); e.style.width=(left/T*100)+"%"; e.style.background=left<5000?"#ff5c6c":"#58fd76"; if(left<=0){ $$(".pb",box).forEach(x=>x.classList.add("dim")); return; } requestAnimationFrame(tm); }; tm(); }
+    return; }
+  if(t==="rev"){ rain(false); const i=st.i, q=Q[i], r=(results[i]||{})[PID], mine=myAns[i];
+    if(!results[i]){ set("rw"+i,bar()+`<div class="hero">${avHtml("")}<div class="big">Hisoblanmoqda…</div></div>`); return; }
+    const ok=r&&r.ok, mood= q.vote ? (mine?"happy":"") : ok?"happy":"sad";
+    const title= q.vote ? (mine?"Hazil savol — hammaga +500 😄":"Javob bermadingiz") : ok?"Toʻgʻri! 🎉":mine?"Afsus, notoʻgʻri":"Vaqt tugadi ⏰";
+    if(set("rv"+i,bar()+`<div class="hero">${avHtml(mood,mood==="happy"?"🎉":"")}<div class="big">${title}</div><div class="fact">${r?`<b style="color:var(--w);font-size:28px">+${r.pts}</b> ball`:"+0 ball"}</div><div class="muted">Katta ekranga qarang — izoh oʻsha yerda</div></div>`)){
+      if(mood==="happy"){ sparks(); vib([30,40,30]); } else if(mood==="sad") vib(120); }
+    return; }
+  if(t==="lb"||t==="final"){ rain(false); const [rk,n]=rankOf();
+    set("rk"+t+rk+"_"+(me.score||0),bar()+`<div class="hero">${avHtml(rk<=3?"happy":"",rk===1?"👑":rk<=3?"🏅":"")}<div class="muted">${t==="final"?"Yakuniy natija":"5 ta savoldan keyin"}</div><div class="rk">${rk}-oʻrin</div><div class="fact">${n} kishi ichida · ${(me.score||0).toLocaleString("ru-RU")} ball</div></div>`); return; }
+  if(t==="fb"){ rain(false); if(fbDone){ set("fbd",bar()+`<div class="hero">${avHtml("happy","💚")}<div class="big">Rahmat! 🙏</div><div class="fact">Fikringiz qabul qilindi</div></div>`); return; }
+    if(set("fb",bar()+`<h2>Dars sizga yoqdimi?</h2><div class="muted">Ismingiz koʻrinmaydi — anonim</div>
+      <div class="rate">${[[4,"😍"],[3,"😊"],[2,"😐"],[1,"😕"]].map(([v,e])=>`<button data-r="${v}">${e}</button>`).join("")}</div>
+      <textarea class="inp" id="fbt" maxlength="500" placeholder="Taklif yoki shikoyatingiz boʻlsa, bemalol yozib qoldiring — keyingi darslar yanada yaxshi boʻlishiga sababchi boʻlasiz 🙏"></textarea>
+      <button class="btn" id="fbb" disabled>Yuborish</button>`)){
+      let r=0; $$(".rate button",box).forEach(b=>b.onclick=()=>{ $$(".rate button",box).forEach(x=>x.classList.remove("sel")); b.classList.add("sel"); r=+b.dataset.r; $("#fbb").disabled=false; vib(20); });
+      $("#fbb").onclick=async()=>{ if(!r) return; $("#fbb").disabled=true; await Store.push("fb",{r,t:$("#fbt").value.trim().slice(0,500)}); await Store.set("fbDone/"+PID,1); }; }
+    return; }
+  if(t==="thx"){ rain(true); set("thx",`<div class="hero">${avHtml("happy","💚")}<div class="big" style="color:var(--g)">Eʼtiboringiz uchun rahmat!</div><div class="fact">Ketkazgan vaqtingizga rozi boʻling.</div></div>`); return; }
+}
+let rung={};
+function introTick(){ if(!st||st.t!=="intro"){ clearInterval(introT); introT=null; return; }
+  const s=st.introStart; if(!s){ rain(false); set("i0",`<div class="hero"><div class="big">👀</div><div class="big">Katta ekranga qarang</div></div>`); return; }
+  const t=(Store.now()-s)/1000; let ring=-1; RINGS.forEach((r,k)=>{ if(t>=r&&t<r+RING_LEN) ring=k; });
+  if(ring>=0){ rain(false); if(!rung[s+"_"+ring]){ rung[s+"_"+ring]=1; vib([500,150,500,150,300]); } set("ir",`<div class="hero"><div class="ring">📞</div><div class="big">Qoʻngʻiroq…</div><div class="fact">Katta ekranga qarang 👀</div></div>`); return; }
+  if(t>=PICKUP){ rain(true); set("ip",`<div class="hero"><div class="big" style="color:var(--g);text-shadow:0 0 20px #58fd76">Katta ekranga qarang</div></div>`); return; }
+  rain(false); set("iw",`<div class="hero"><div class="big">🤫</div><div class="big">Katta ekranga qarang</div></div>`); }
+}
+</script>
+</body></html>
