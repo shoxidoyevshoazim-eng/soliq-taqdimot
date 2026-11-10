@@ -743,7 +743,7 @@ function showSlide(n){ startAnim(n); $$(".s").forEach(e=>e.classList.remove("on"
 function showDyn(){ stopAnim(); ++typeTok; $$(".s").forEach(e=>e.classList.remove("on")); const d=$("#dyn"); d.classList.remove("on"); void d.offsetWidth; d.classList.add("on"); }
 const isSl=s=>s&&(s.t==="slide"||s.t==="pollrev");
 
-async function go(n,first){ if(busy) return; n=Math.max(0,Math.min(STEPS.length-1,n)); const prev=STEPS[step], S=STEPS[n], fwd=n>step; step=n;
+async function go(n,first){ if(busy) return; n=Math.max(0,Math.min(STEPS.length-1,n)); const prev=STEPS[step], S=STEPS[n], fwd=n>step; step=n; { const b=$("#black"); b.style.transition="none"; b.style.opacity=1; b.style.display="none"; }
   const extra={}; if(S.t==="q") extra.qStart=Store.now(); if(S.t==="intro") extra.introStart=null;
   st={step:n,t:S.t,n:S.n??null,i:S.i??null,...extra,ts:Store.now()};
   const deferPub = isSl(S) && !first && fwd && prev && prev.t!=="intro" || S.t==="thx";
